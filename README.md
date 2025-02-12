@@ -15,6 +15,16 @@ Para configurar o projeto deve-se executar os seguintes comandos:
   sudo kubectl apply -f 2-db-deployment.yaml
   sudo kubectl apply -f 3-app-deployment.yaml
 ```
+## Para autenticar
+
+Uma camada de segurança básica foi adicionada com usuário e senha:
+
+**Usuário:** master
+**Senha:*** master@@1525#Apk
+
+Utilizar estes dados para autenticar as requisições.
+
+Obs: Será implementado uma segurança mais aprimorada usando tokens no futuro.
 
 ## Obter endereço do serviço
 
