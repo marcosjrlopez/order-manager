@@ -20,7 +20,8 @@ Para configurar o projeto deve-se executar os seguintes comandos:
 Uma camada de segurança básica foi adicionada com usuário e senha:
 
 **Usuário:** master
-**Senha:*** master@@1525#Apk
+
+**Senha:** master@@1525#Apk
 
 Utilizar estes dados para autenticar as requisições.
 
