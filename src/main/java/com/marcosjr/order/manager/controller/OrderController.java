@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.marcosjr.order.manager.enums.OrderStatus;
-import com.marcosjr.order.manager.exception.OrderDuplicateException;
 import com.marcosjr.order.manager.exception.OrderNotFoundException;
 import com.marcosjr.order.manager.model.Order;
 import com.marcosjr.order.manager.service.OrderService;
@@ -73,17 +72,17 @@ public class OrderController {
 	
 	@GetMapping("/finished")
 	public List<Order> retriveFinishedOrders(){
-		return getService().findByStatus("FINISHED");
+		return getService().findByStatus(OrderStatus.FINISHED.getValue());
 	}
 	
 	@GetMapping("/processing")
 	public List<Order> retriveProcessingOrders(){
-		return getService().findByStatus("PROCESSING");
+		return getService().findByStatus(OrderStatus.PROCESSING.getValue());
 	}
 	
 	@GetMapping("/failed")
 	public List<Order> retriveFailedOrders(){
-		return getService().findByStatus("ERROR");
+		return getService().findByStatus(OrderStatus.ERROR.getValue());
 	}
 	
 	@GetMapping("/receive/{id}")
