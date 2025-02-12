@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: springboot-crud-k8s
-          image: marcosjrlopes/order-manager:v6
+          image: marcosjrlopes/order-manager:v7
           ports:
             - containerPort: 8080
           env:   
