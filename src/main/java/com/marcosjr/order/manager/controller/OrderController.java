@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,26 +67,31 @@ public class OrderController {
 	}
 	
 	@GetMapping("/all")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<Order> retriveAllOrders(){
 		return getService().findAll();
 	}
 	
 	@GetMapping("/finished")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<Order> retriveFinishedOrders(){
 		return getService().findByStatus(OrderStatus.FINISHED.getValue());
 	}
 	
 	@GetMapping("/processing")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<Order> retriveProcessingOrders(){
 		return getService().findByStatus(OrderStatus.PROCESSING.getValue());
 	}
 	
 	@GetMapping("/failed")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<Order> retriveFailedOrders(){
 		return getService().findByStatus(OrderStatus.ERROR.getValue());
 	}
 	
 	@GetMapping("/receive/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Order retriveOrdersById(@PathVariable String id){
 		Optional<Order> result = getService().findById(id);
 		if(result.isEmpty())
@@ -95,6 +101,7 @@ public class OrderController {
 	}
 	
 	@PostMapping("/receive")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Order> processOrder(@Valid @RequestBody Order order){
 		try {
 			order.setStatus(OrderStatus.PROCESSING.getValue());
